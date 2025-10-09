@@ -135,6 +135,7 @@ export const MultipleChoice = {
       });
 
       const hasOtherOption = options.includes("Other");
+      const hasOtherOption = Array.isArray(options) && options.some(v => /^(other|please enter)$/i.test(String(v).trim()));
       let otherInputContainer = null;
       if (hasOtherOption) {
         otherInputContainer = document.createElement('div');
