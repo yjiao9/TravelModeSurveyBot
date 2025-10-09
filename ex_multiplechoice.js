@@ -143,7 +143,7 @@ export const MultipleChoice = {
           <input type="text" id="other-option" placeholder="Please type your answer">
         `;
         form.appendChild(otherInputContainer);
-        const otherCheckbox = form.querySelectorAll('input[value="Other"], input[value="Please enter"]');
+        const otherCheckboxes = form.querySelectorAll('input[value="Other"], input[value="Please enter"]');
         otherInputContainer.style.display = Array.from(otherCheckboxes).some(cb => cb.checked) ? 'block' : 'none';
         Array.from(otherCheckboxes).forEach(cb => {
           cb.addEventListener('change', () => {
