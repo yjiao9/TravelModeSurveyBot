@@ -144,10 +144,13 @@ export const MultipleChoice = {
         `;
         form.appendChild(otherInputContainer);
         const otherCheckbox = form.querySelectorAll('input[value="Other"], input[value="Please enter"]');
-        otherInputContainer.style.display = otherCheckbox.checked ? 'block' : 'none';
-        otherCheckbox.addEventListener('change', () => {
-          otherInputContainer.style.display = otherCheckbox.checked ? 'block' : 'none';
-          updateCheckboxState();
+        otherInputContainer.style.display = Array.from(otherCheckboxes).some(cb => cb.checked) ? 'block' : 'none';
+        Array.from(otherCheckboxes).forEach(cb => {
+          cb.addEventListener('change', () => {
+            otherInputContainer.style.display =
+              Array.from(otherCheckboxes).some(x => x.checked) ? 'block' : 'none';
+            updateCheckboxState();
+          });
         });
       }
 
