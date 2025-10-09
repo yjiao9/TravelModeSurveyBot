@@ -143,7 +143,7 @@ export const MultipleChoice = {
           <input type="text" id="other-option" placeholder="Please type your answer">
         `;
         form.appendChild(otherInputContainer);
-        const otherCheckbox = form.querySelector('input[value="Other"]');
+        const otherCheckbox = form.querySelectorAll('input[value="Other"], input[value="Please enter"]');
         otherInputContainer.style.display = otherCheckbox.checked ? 'block' : 'none';
         otherCheckbox.addEventListener('change', () => {
           otherInputContainer.style.display = otherCheckbox.checked ? 'block' : 'none';
@@ -162,10 +162,10 @@ export const MultipleChoice = {
         let selectedOptions = Array.from(form.querySelectorAll('input[name="option"]:checked'))
           .map(cb => cb.value);
 
-        if (hasOtherOption && selectedOptions.includes("Other")) {
+        if (hasOtherOption && (selectedOptions.includes("Other") || selectedOptions.includes("Please enter"))) {
           const otherValue = form.querySelector('#other-option').value.trim();
-          selectedOptions = selectedOptions.filter(v => v !== "Other");
-          if (otherValue) selectedOptions.push(`Other: ${otherValue}`);
+          selectedOptions = selectedOptions.filter(v => v !== "Other" && v !== "Please enter");
+          if (otherValue) selectedOptions.push(`User Enter: ${otherValue}`);
         }
 
         if (!selectedOptions.length) {
