@@ -134,7 +134,7 @@ export const MultipleChoice = {
         flowContainer.appendChild(label);
       });
 
-      const hasOtherOption = Array.isArray(options) && options.some(v => /^(other|please enter)$/i.test(String(v).trim()));
+      const hasOtherOption = options.includes("Other") || options.includes("Please enter");
       let otherInputContainer = null;
       if (hasOtherOption) {
         otherInputContainer = document.createElement('div');
