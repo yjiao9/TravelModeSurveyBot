@@ -23,6 +23,7 @@
                 url: "https://runtime-api.voiceflow.com"
               },
               assistant: {
+                  persistence: 'memory',
                   extensions: [
                     MultipleChoice, RatingSlider, TableChoice, DisableInputExtension, ImageGenerator,
                   ],
